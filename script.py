@@ -24,7 +24,7 @@ def xy_evaluator(line_contents_str):  # used for getting value of X and Y from m
 
 def function1(filename):
     partition_dict = {}  # later used to store all machine types(keys) and their commands(contents)
-    # (quite memory inefficient > 3KB)
+    # (quite memory inefficient)
     print('processing: #', end='')
     last_key = 0
     file1 = open(filename, 'r+')

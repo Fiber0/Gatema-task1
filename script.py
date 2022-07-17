@@ -1,7 +1,7 @@
 import os
 
 
-def xy_evaluator(line_contents_str):  # used for getting value of X and Y from machine command
+def xy_evaluator(line_contents_str):  # used for getting value of X and Y from machine(CNC) command
 
     f = line_contents_str[0]
     if line_contents_str[0] == 'X':
@@ -9,8 +9,8 @@ def xy_evaluator(line_contents_str):  # used for getting value of X and Y from m
         last_axis = 'Y'
     else:
         last_axis = 'X'
-    # code below modifies the machine command into an executable string, for instance this command: X93.350Y116.850T01
-    # will be modified to: X=93.350;Y=116.850#T01 and executed -> setting value of X and Y
+    # code below modifies the machine(CNC) command into an executable string, for instance this command: X93.350Y116.850T01
+    # will be modified to: X=93.350;Y=116.850#T01 and executed -> setting the value of X and Y
     line_contents_str = line_contents_str.replace(f, f'{f}=')
     line_contents_str = line_contents_str.replace(last_axis, f';{last_axis}=')
     if line_contents_str.find('T') != -1:
@@ -28,7 +28,7 @@ def function1(filename):
     print('processing: #', end='')
     last_key = 0
     file1 = open(filename, 'r+')
-    all_lines = file1.readlines()  # stores all document lines insice variable (even more memory consuming )
+    all_lines = file1.readlines()  # stores all document lines inside variable (even more memory consuming )
 
     try:
         print(' #', end='')
@@ -53,14 +53,14 @@ def function1(filename):
         # cnc.txt - structuring ˇ
         script_path = os.path.dirname(os.path.realpath(__file__))  # gets location of this script
         new_file = open(rf'{script_path}\cnc.txt', 'w')
-        doc_head = all_lines[: block_start]  # defines all lines from up to machine commands
+        doc_head = all_lines[: block_start]  # defines all lines from top to machine commands
 
         for o in doc_head:
             new_file.write(o)
 
         sorted_machines_list = sorted(partition_dict.keys())
         print(' #', end='\n')
-        # sorts all partition keys and writes their values in ascending order
+        # sorts all partition keys and writes their values into new document in ascending order
         for p in sorted_machines_list:
             for a in partition_dict.get(p):
                 new_file.write(a)

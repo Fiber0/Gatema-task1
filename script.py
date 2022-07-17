@@ -141,4 +141,4 @@ if __name__ == '__main__':
             print("invalid command type 'help' for help")
 
             
-# if something didn't work right or something could work better, feel free to start a pulll request  
+# if something didn't work right or something could work better, feel free to contact me or start a pull request

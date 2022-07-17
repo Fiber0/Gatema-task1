@@ -24,11 +24,12 @@ def xy_evaluator(line_contents_str):  # used for getting value of X and Y from m
 
 def function1(filename):
     partition_dict = {}  # later used to store all machine types(keys) and their commands(contents)
-    # (quite memory inefficient)
+    # (quite memory inefficient, but quite good for sorting blocks of lines, this method also doesn't require fixed or completed(you can skip names - T01, T02, T04) ammount of CNC machines specified)
     print('processing: #', end='')
     last_key = 0
     file1 = open(filename, 'r+')
-    all_lines = file1.readlines()  # stores all document lines inside variable (even more memory consuming )
+    all_lines = file1.readlines()  # stores all document lines inside variable (even more memory consuming, but other methods 
+    #(such as storing the block of CNC commands or only one line at a time) will require much more computation power due to constant iterating through file1)
 
     try:
         print(' #', end='')

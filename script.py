@@ -139,3 +139,6 @@ if __name__ == '__main__':
                   'f2 - function 2(prints both largest and smallest X and Y values). usage example: start f2\n')
         else:
             print("invalid command type 'help' for help")
+
+            
+# if something didn't work right or something could work better, feel free to start a pulll request  

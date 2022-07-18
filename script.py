@@ -29,7 +29,7 @@ def function1(filename):
     last_key = 0
     file1 = open(filename, 'r+')
     all_lines = file1.readlines()  # stores all document lines inside variable (even more memory consuming, but other methods 
-    #(such as storing the block of CNC commands or only one line at a time) will require much more computation power due to constant iterating through file1)
+    #(such as storing the block of CNC commands or only one line at a time) will require much more computation power due to constant iterating through lines of file1)
 
     try:
         print(' #', end='')
@@ -43,7 +43,7 @@ def function1(filename):
             if X > 50:
                 current_line_str = current_line_str.replace(f'{Y}', f'{Y + 10}')  # replaces current value of Y by Y+ 10
 
-            if current_line_str.find('T') != -1:  # if command contains T (new partition)
+            if current_line_str.find('T') != -1:  # if command contains T (new nachine)
                 last_key = current_line_str[-3: -1]
                 partition_dict[last_key] = current_line_str  # makes new key-value-pair
             else:
@@ -77,7 +77,7 @@ def function1(filename):
 
     except KeyError:
         print('! first machine command is not marked with machine name or is invalid ! make sure it meets this format:'
-              "'T01'")
+              "'{CNC command}T01'")
     except Exception:
         print('! unexpected error happened ! make sure the specified files structure is expected')
 
